@@ -1,0 +1,27 @@
+make a business logic :
+insert user
+get all rooms
+database.php: function($tabel,$columns,$values)
+add user 
+update user
+delete user (user)
+to the database 
+validate.php has:
+trim, validate email,validate password 
+
+i have Folder Structure:
+/cafetria
+    /css
+        styles.css
+    /js
+        scripts.js
+   /uploads
+    /includes
+        nav.php
+        footer.php
+    index.php
+    login.php
+config.php
+users.php
+validate.php
+user_functions.php
