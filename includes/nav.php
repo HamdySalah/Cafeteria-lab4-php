@@ -80,7 +80,7 @@
                             <a class="nav-link" href="#"><span>Products</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="welcome.php"><span>Users</span></a>
+                            <a class="nav-link" href="users.php"><span>Users</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><span>Manual Order</span></a>

@@ -1,4 +1,5 @@
 <?php
+session_start(); 
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
@@ -8,7 +9,6 @@ define('DB_USER', 'root');
 define('DB_PASS', 'root');         
 define('DB_NAME', 'cafeteria');
 
-// session_start(); 
 // ini_set('session.cookie_lifetime', 86400);
 // ini_set('session.gc_maxlifetime', 86400); 
 
@@ -25,7 +25,6 @@ define('BASE_URL', 'http://localhost/php/lab4/'); // Base URL of the project
 
 function getDBConnection() {
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-    echo "every thin done suc";
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }

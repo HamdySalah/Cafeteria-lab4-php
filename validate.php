@@ -23,7 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($name)) {
         $error .= "Name is required.<br>";
     }
-
+    $sql = "SELECT id FROM users WHERE email = ?";
+    $stmt = $db->execute($sql, [$email]);
+    if ($stmt->get_result()->num_rows > 0) {
+        $error .= "Email already exists.<br>";
+    }
     if (empty($email)) {
         $error .= "Email is required.<br>";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -43,7 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($room)) {
         $error .= "Room number is required.<br>";
     }
-
+    if ($stmt->insert_id > 0) {
+        // Success
+    } else {
+        $error .= "Error saving user data.<br>";
+    }
     if (isset($_FILES["profile_picture"]) && $_FILES["profile_picture"]["error"] == 0) {
         $fileType = mime_content_type($_FILES["profile_picture"]["tmp_name"]);
 
@@ -97,4 +105,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header('Location: index.php');
     exit();
 }
-?>

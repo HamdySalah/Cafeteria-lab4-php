@@ -2,7 +2,7 @@
 require_once 'config.php'; // Include the configuration file
 
 class Database {
-    private $conn;
+    public $conn;
 
     // Constructor: Connects to the database
     public function __construct() {
