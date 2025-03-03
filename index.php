@@ -70,164 +70,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Styled Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        nav {
-            background-color: #007BFF;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        nav h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .form-container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 500px;
-            margin: 40px auto; 
-            flex: 1; 
-        }
-
-        .form-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #333;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 5px;
-        }
-
-        .input-group input,
-        .input-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            color: #333;
-            background-color: #f9f9f9;
-            transition: border-color 0.3s ease;
-        }
-
-        .input-group input:focus,
-        .input-group select:focus {
-            border-color: #007BFF;
-            outline: none;
-            background-color: #fff;
-        }
-        .input-group input[type="file"] {
-            padding: 8px;
-            background-color: #f9f9f9;
-        }
-
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .button-group button {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .button-group button[type="submit"] {
-            background-color: #007BFF;
-            color: white;
-        }
-
-        .button-group button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        .button-group button[type="reset"] {
-            background-color: #f4f4f4;
-            color: #333;
-            border: 1px solid #ddd;
-        }
-
-        .button-group button[type="reset"]:hover {
-            background-color: #ddd;
-        }
-
-        footer {
-            background-color: #343a40;
-            color: white; 
-            padding: 20px 0; 
-            text-align: center; 
-            font-family: Arial, sans-serif; 
-            margin-top: auto; 
-        }
-
-        footer a {
-            color: #007BFF;
-            text-decoration: none; 
-            margin: 0 10px; 
-            font-weight: bold; 
-            transition: color 0.3s ease; 
-        }
-
-        footer a:hover {
-            color: #0056b3;
-        }
-
-        footer p {
-            margin: 10px 0 0;
-            font-size: 14px; 
-            color: rgba(255, 255, 255, 0.8); 
-        }
-
-        footer .separator {
-            color: rgba(255, 255, 255, 0.5); 
-        }
-        @media (max-width: 768px) {
-            footer {
-                padding: 15px 0; 
-            }
-
-            footer a {
-                display: block; 
-                margin: 10px 0; 
-            }
-
-            footer .separator {
-                display: none;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <?php include("includes/nav.php"); ?>
@@ -273,7 +119,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="reset">Reset</button>
             </div>
         </form>
-
         <!-- Logout Button -->
         <button style="
             flex: 1;
@@ -292,12 +137,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             width: 100%;
             height: 40px;
             cursor: pointer;
-            transition: background 0.2s;" 
+            transition: background 0.2s;"
             onclick="window.location.href='index.php?logout=true'">
             Logout
         </button>
     </div>
-
     <?php include("includes/footer.php"); ?>
 </body>
+
 </html>

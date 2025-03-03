@@ -7,7 +7,8 @@ require_once 'config.php';
 require_once 'database.php';
 require 'user_functions.php';
 
-$users = getUsers($conn); // Fetch users from the database
+$conn = getDBConnection();
+$users = getUsers($conn);
 
 ?>
 
@@ -17,7 +18,7 @@ $users = getUsers($conn); // Fetch users from the database
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users List</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Add your CSS file -->
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
     <h2>Users List</h2>
@@ -43,7 +44,7 @@ $users = getUsers($conn); // Fetch users from the database
                     <td><?= htmlspecialchars($user['ext'] ?? 'N/A'); ?></td>
                     <td>
                         <?php if ($user['profile_picture']): ?>
-                            <img src="uploads/<?= htmlspecialchars($user['profile_picture']); ?>" width="50" height="50">
+                            <img src="<?= htmlspecialchars($user['profile_picture']); ?>" width="50" height="50">
                         <?php else: ?>
                             No Image
                         <?php endif; ?>

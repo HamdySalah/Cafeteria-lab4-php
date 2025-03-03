@@ -2,7 +2,7 @@
 require_once 'config.php';
 require_once 'database.php';
 
-// Function to fetch all users
+
 function getUsers($conn) {
     $stmt = $conn->query("SELECT * FROM users ORDER BY id ASC");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

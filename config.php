@@ -22,14 +22,16 @@ ini_set('display_errors', 1);
 define('SITE_NAME', 'lab4'); 
 define('BASE_URL', 'http://localhost/php/lab4/'); // Base URL of the project
 
-
 function getDBConnection() {
-    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    try {
+        $conn = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
+    } catch (PDOException $e) {
+        die("Connection failed: " . $e->getMessage());
     }
-    return $conn;
 }
+
 
 function redirect($url) {
     header("Location: $url");

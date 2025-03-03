@@ -7,7 +7,6 @@ if (isset($_SESSION["username"])) {
     header("Location: index.php");
     exit();
 }
-
 $error = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["uname"] ?? "";

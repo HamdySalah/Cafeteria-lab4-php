@@ -1,10 +1,9 @@
 <?php
-require_once 'config.php'; // Include the configuration file
+require_once 'config.php'; 
 
 class Database {
     public $conn;
 
-    // Constructor: Connects to the database
     public function __construct() {
         $this->conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 

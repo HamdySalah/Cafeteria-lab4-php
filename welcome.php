@@ -173,7 +173,6 @@ unset($_SESSION['form_data']);
         </tr>
     </table>
 
-    <!-- Links for Navigation -->
     <div class="container">
         <a href="index.php">Add New User</a> | 
         <a href="index.php?logout=true">Logout</a>
