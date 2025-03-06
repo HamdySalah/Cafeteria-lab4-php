@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/../config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,6 +96,13 @@
             </div>
         </nav>
     </header>
+
+    <nav>
+        <h1><?php echo SITE_NAME; ?></h1>
+        <a href="index.php">Home</a>
+        <a href="users.php">Users</a>
+        <a href="index.php?logout=true">Logout</a>
+    </nav>
 
     <!-- Bootstrap JS and Dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

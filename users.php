@@ -4,12 +4,12 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 require_once 'config.php';
-require_once 'database.php';
-require 'user_functions.php';
+require_once 'classes/User.php';
 
-$conn = getDBConnection();
-$users = getUsers($conn);
-
+$user = new User();
+$users = array_filter($user->getAllUsers(), function($user) {
+    return $user['role'] !== 'admin';
+});
 ?>
 
 <!DOCTYPE html>

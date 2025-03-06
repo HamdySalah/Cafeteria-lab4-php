@@ -1,5 +1,7 @@
 <?php
+require_once 'config.php';
 session_start();
+require_once 'classes/User.php';
 
 if (!isset($_SESSION["username"])) {
     header("Location: login.php");
@@ -12,7 +14,7 @@ if (!isset($_SESSION['form_data'])) {
 }
 
 $data = $_SESSION['form_data'];
-unset($_SESSION['form_data']); 
+unset($_SESSION['form_data']);
 ?>
 
 <!DOCTYPE html>

@@ -1,9 +1,8 @@
 <?php
 require_once 'config.php';
-require_once 'database.php';
+require_once 'classes/User.php';
 
-$db = new Database();
-$conn = $db->getConnection();
+$user = new User();
 
 // Check if ID is provided
 if (!isset($_GET['id']) || empty($_GET['id'])) {
@@ -13,9 +12,9 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 $id = intval($_GET['id']); // Sanitize ID input
 
 // Fetch user data
-$user = $db->fetchOne("SELECT * FROM users WHERE id = ?", [$id]);
+$userData = $user->getUserById($id);
 
-if (!$user) {
+if (!$userData) {
     die("User not found.");
 }
 
@@ -52,21 +51,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Error uploading file.");
         }
     } else {
-        $profile_picture = $user['profile_picture']; // Keep existing picture
+        $profile_picture = $userData['profile_picture']; // Keep existing picture
     }
 
     // Update user in database
-    $updateSql = "UPDATE users SET name = ?, email = ?, room = ?, ext = ?, profile_picture = ? WHERE id = ?";
-    $success = $db->execute($updateSql, [$name, $email, $room, $ext, $profile_picture, $id]);
-
-    if ($success) {
+    if ($user->updateUser($id, $name, $email, $room, $ext, $profile_picture)) {
         header("Location: users.php");
         exit();
     } else {
         die("Error updating user.");
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -81,22 +76,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2>Edit User</h2>
     <form action="edit_user.php?id=<?= $id; ?>" method="POST" enctype="multipart/form-data">
         <label>Name:</label>
-        <input type="text" name="name" value="<?= htmlspecialchars($user['name']); ?>" required>
+        <input type="text" name="name" value="<?= htmlspecialchars($userData['name']); ?>" required>
         
         <label>Email:</label>
-        <input type="email" name="email" value="<?= htmlspecialchars($user['email']); ?>" required>
+        <input type="email" name="email" value="<?= htmlspecialchars($userData['email']); ?>" required>
         
         <label>Room:</label>
-        <input type="text" name="room" value="<?= htmlspecialchars($user['room']); ?>" required>
+        <input type="text" name="room" value="<?= htmlspecialchars($userData['room']); ?>" required>
         
         <label>Extension:</label>
-        <input type="text" name="ext" value="<?= htmlspecialchars($user['ext']); ?>">
+        <input type="text" name="ext" value="<?= htmlspecialchars($userData['ext']); ?>">
         
         <label>Profile Picture:</label>
         <input type="file" name="profile_picture">
         <br>
-        <?php if ($user['profile_picture']): ?>
-            <img src="<?= htmlspecialchars($user['profile_picture']); ?>" width="50" height="50">
+        <?php if ($userData['profile_picture']): ?>
+            <img src="<?= htmlspecialchars($userData['profile_picture']); ?>" width="50" height="50">
         <?php else: ?>
             No Image
         <?php endif; ?>
